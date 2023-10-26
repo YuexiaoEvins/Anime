@@ -28,3 +28,5 @@ class TTS:
         # wait for music play done.
         while pygame.mixer.music.get_busy():
             pygame.time.Clock().tick(10)
+
+        # todo 希望通过ipc的方式，跟live2d的进程通信，让其进行人物的动作变更
