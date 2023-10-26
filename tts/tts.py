@@ -8,6 +8,9 @@ class TTS:
     # ttsImpl: gtts.gTTS
     lang: str
 
+    # todo configure me
+    generated_mp3_file_path: str
+
     def __init__(self, lang="zh-cn"):
         self.lang = lang
 
