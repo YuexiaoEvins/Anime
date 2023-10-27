@@ -31,3 +31,4 @@ class TTS:
 
         # todo 希望通过ipc的方式，跟live2d的进程通信，让其进行人物的动作变更
         # todo 调研：https://www.2bboy.com/archives/147.html
+        # todo: 还有这个: https://blog.csdn.net/starvapour/article/details/108887044
