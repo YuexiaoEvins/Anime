@@ -2,9 +2,7 @@ import blivedm
 from core import DataSource
 import blivedm.models.web as web_models
 
-class BilibiliLiveClient
-
-# todo implement handler
+class BilibiliLiveClient:
 class BilibiliHandlerImpl(blivedm.BaseHandler):
 
     # add dependency live2d generator and tts
