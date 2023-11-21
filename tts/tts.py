@@ -1,7 +1,8 @@
 import time
 
+import aiohttp
 import gtts
-import io
+
 import pygame
 
 class TTS:
@@ -34,36 +35,33 @@ class TTS:
         # todo: 还有这个: https://blog.csdn.net/starvapour/article/details/108887044
 
     # 请求genshinvoice.top的api
-    async def genshinvoice_top_api(self, text):
-        url = 'https://genshinvoice.top/api'
-
-        genshinvoice_top = self.config.get("genshinvoice_top")
-
-        params = {
-            'speaker': genshinvoice_top['speaker'],
-            'text': text,
-            'format': genshinvoice_top['format'],
-            'length': genshinvoice_top['length'],
-            'noise': genshinvoice_top['noise'],
-            'noisew': genshinvoice_top['noisew']
-        }
-
-        try:
-            async with aiohttp.ClientSession() as session:
-                async with session.get(url, params=params) as response:
-                    response = await response.read()
-                    # voice_tmp_path = os.path.join(self.audio_out_path, 'genshinvoice_top_' + self.common.get_bj_time(4) + '.wav')
-                    file_name = 'genshinvoice_top_' + self.common.get_bj_time(4) + '.wav'
-
-                    voice_tmp_path = self.common.get_new_audio_path(self.audio_out_path, file_name)
-
-                    with open(voice_tmp_path, 'wb') as f:
-                        f.write(response)
-
-                    return voice_tmp_path
-        except aiohttp.ClientError as e:
-            logging.error(f'genshinvoice.top请求失败: {e}')
-        except Exception as e:
-            logging.error(f'genshinvoice.top未知错误: {e}')
-
-        return None
+    # async def genshin_voice_top_api(self, text):
+    #     url = 'https://genshinvoice.top/api'
+    #
+    #     params = {
+    #         'speaker': '神里绫华',
+    #         'text': text,
+    #         'format': 'mp3',
+    #         'length': '1.25',
+    #         'noise': '0.2',
+    #         'noisew': '0.9'
+    #     }
+    #
+    #     try:
+    #         async with aiohttp.ClientSession() as session:
+    #             async with session.get(url, params=params) as response:
+    #                 response = await response.read()
+    #                 file_name = 'genshin_voice_top_' + 'demo' + '.mp3'
+    #
+    #                 voice_tmp_path = file_name
+    #
+    #                 with open(voice_tmp_path, 'wb') as f:
+    #                     f.write(response)
+    #
+    #                 return voice_tmp_path
+    #     except aiohttp.ClientError as e:
+    #         print(f'genshinvoice.top请求失败: {e}')
+    #     except Exception as e:
+    #         print(f'genshinvoice.top未知错误: {e}')
+    #
+    #     return None
